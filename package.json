@@ -43,6 +43,8 @@
     "rimraf": "^3.0.2"
   },
   "devDependencies": {
+    "eslint": "^8.21.0",
+    "eslint-plugin-import": "^2.26.0",
     "jest": "^28.1.3"
   }
 }
