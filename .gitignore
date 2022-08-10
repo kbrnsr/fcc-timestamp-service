@@ -1,4 +1,4 @@
-dist
+dist-server
 # Logs
 logs
 *.log

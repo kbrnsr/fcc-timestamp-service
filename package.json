@@ -2,9 +2,20 @@
   "name": "fcc-timestamp-service",
   "version": "0.0.0",
   "private": true,
+  "nodemonConfig": { 
+    "exec": "npm run dev",
+    "watch": ["server/*", "public/*"],
+    "ignore": ["**/__tests__/**", "*.test.js", "*.spec.js"]
+  },
   "scripts": {
-    "start": "node ./bin/www",
-    "transpile": "babel ./ --out-dir dist"
+    "start": "npm run prod",
+    "build": "npm-run-all clean transpile",
+    "server": "node ./dist-server/bin/www",
+    "dev": "NODE_ENV=development npm-run-all build server",
+    "prod": "NODE_ENV=production npm-run-all build server",
+    "transpile": "babel ./server --out-dir dist-server",
+    "clean": "rimraf dist-server",
+    "watch:dev": "nodemon"
   },
   "babel": {
     "presets": ["@babel/preset-env"]
