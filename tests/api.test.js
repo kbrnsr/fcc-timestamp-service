@@ -3,9 +3,9 @@ import supertest from 'supertest';
 
 const sRequest = supertest(server);
 
-const apiDateRoutePath = '/api/date';
+const apiDateRoutePath = '/api';
 
-describe('/api/date endpoints', () => {
+describe('/api endpoint', () => {
   test('does the route exist?', async () => {
     const res = await sRequest.get(apiDateRoutePath);
     expect(res.status).toEqual(200);
