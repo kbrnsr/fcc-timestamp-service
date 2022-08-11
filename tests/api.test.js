@@ -1,3 +1,13 @@
-test('adds 1 + 2 to equal 3', () => {
-  expect(3).toBe(3);
-});
+import server from '../server/app';
+import supertest from 'supertest';
+
+const sRequest = supertest(server);
+
+const apiDateRoutePath = '/api/date';
+
+describe('/api/date endpoints', () => {
+  test('does the route exist?', async () => {
+    const res = await sRequest.get(apiDateRoutePath);
+    expect(res.status).toEqual(200);
+  })
+})
