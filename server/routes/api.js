@@ -6,17 +6,19 @@ const router = express.Router();
 router.get('/:date', (req, res, next) => {
   const dateParam = req.params.date;
   let date;
-  if (Number.isInteger(parseInt(dateParam, 10))) {
-    date = new Date(parseInt(dateParam, 10));
+  if (Number.isInteger(Number(dateParam))) {
+    date = new Date(Number(dateParam));
   } else {
     date = new Date(dateParam);
   }
-
-  const dateMilliSeconds = date.getTime();
+  console.log(date.getTime());
   // error checking here
   // end error checking
 
-  res.json({ unix: dateMilliSeconds });
+  res.json({
+    unix: date.getTime(),
+    utc: date.toUTCString(),
+  });
 });
 
 /* GET home page. */
