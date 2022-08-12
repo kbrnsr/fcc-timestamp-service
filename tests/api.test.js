@@ -29,4 +29,8 @@ describe('/api endpoint', () => {
     expect(res.body.unix).toBe(unixTestTimestamp);
     expect(res.body.utc).toBe(utcTestDateString);
   });
+  test('check error response if bad request', async () => {
+    const res = await sRequest.get(`${apiRoutePath}/derpaderpa`);
+    expect(res.statusCode).toBe(400);
+  });
 });

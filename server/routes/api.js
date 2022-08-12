@@ -2,8 +2,7 @@ import express from 'express';
 
 const router = express.Router();
 
-// eslint-disable-next-line no-unused-vars
-router.get('/:date', (req, res, next) => {
+router.get('/:date', (req, res) => {
   const dateParam = req.params.date;
   let date;
   if (Number.isInteger(Number(dateParam))) {
@@ -11,11 +10,13 @@ router.get('/:date', (req, res, next) => {
   } else {
     date = new Date(dateParam);
   }
-  console.log(date.getTime());
+  if (Number.isNaN(date.getTime())) {
+    return res.status(400).send('Bad request');
+  }
   // error checking here
   // end error checking
 
-  res.json({
+  return res.json({
     unix: date.getTime(),
     utc: date.toUTCString(),
   });
