@@ -11,7 +11,7 @@ describe('/api endpoint', () => {
     expect(res.status).toEqual(200);
   });
   test('check if route converts ms to unix timestamp', async () => {
-    const unixTestTimestamp = '1451001600000';
+    const unixTestTimestamp = 1451001600000;
     const res = await sRequest.get(`${apiRoutePath}/${unixTestTimestamp}`);
     expect(res.type).toEqual(expect.stringContaining('json'));
     expect(res.body).toHaveProperty('unix');
