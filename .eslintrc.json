@@ -4,33 +4,14 @@
         "node": true,
         "jest": true
     },
-    "extends": ["eslint:recommended", "plugin:import/recommended"],
+    "extends": [
+        "airbnb-base"
+    ],
     "parserOptions": {
         "ecmaVersion": "latest",
         "sourceType": "module"
     },
     "rules": {
-        "indent": [
-            "error",
-            2
-        ],
-        "linebreak-style": [
-            "error",
-            "unix"
-        ],
-        "quotes": [
-            "error",
-            "single"
-        ],
-        "semi": [
-            "error",
-            "always"
-        ],
-        "arrow-body-style": [
-            "error",
-            "always"
-        ],
-        "import/no-unresolved": [2],
-        "prefer-default": true
+        "no-use-before-define": ["error", {"functions": false, "classes": false}]
     }
 }
