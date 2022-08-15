@@ -9,6 +9,30 @@ A microservice providing parsing of date strings as well as timestamp of the cur
 
 The project uses Babel to convert ES6 style code to compatible JS code
 
+## API
+
+The project provides the following routes and responses:
+- [project url]/api will respond with the current date/time JSON and 200
+```json
+{
+  unix :1660556043896,
+  utc: "Mon, 15 Aug 2022 09:34:03 GMT"
+}
+```
+- [project url]/api/parameter where parameter can be a [valid date/time string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/Date#datestring) as well as unix timestamp in milliseconds will respond with JSON and 200
+```json
+{
+  unix: 1451001600000
+  utc: "Fri, 25 Dec 2015 00:00:00 GMT"
+}
+```
+- [project url]/api/invalidParameter will respond with JSON and 400
+```json
+{
+  error: "Invalid Date"
+}
+```
+
 ## Setup
 
 ### Development
