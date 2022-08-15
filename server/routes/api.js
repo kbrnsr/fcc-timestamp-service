@@ -11,10 +11,8 @@ router.get('/:date', (req, res) => {
     date = new Date(dateParam);
   }
   if (Number.isNaN(date.getTime())) {
-    return res.status(400).send('Bad request');
+    return res.status(400).json({ error: 'Invalid Date' });
   }
-  // error checking here
-  // end error checking
 
   return res.json({
     unix: date.getTime(),
@@ -22,10 +20,12 @@ router.get('/:date', (req, res) => {
   });
 });
 
-/* GET home page. */
-// eslint-disable-next-line
-router.get('/', function(req, res, next) {
-  res.send('Excellent');
+router.get('/', (req, res) => {
+  const date = new Date();
+  return res.json({
+    unix: date.getTime(),
+    utc: date.toUTCString(),
+  });
 });
 
 export default router;
